@@ -2,95 +2,162 @@
 
 public class ListaIterativa
 {
-    private Node? first;
+    private Nodo? first;
 
     public ListaIterativa ( ) {
         first = null;
     }
 
-    public bool is_empty ( )
+    public void listar ( )
+    {
+        // Console.WriteLine("ENLISTANDO ...");
+
+        Nodo? curr = first;
+        while ( curr != null ) {
+            Console.Write($"{curr.value}, ");
+            curr = curr.next;
+        }
+        Console.Write("\n");
+    }
+
+    public bool es_vacia ( )
     {
         return first == null;
     }
 
-    public uint length( )
+    public uint longitud ( )
     {
         uint count = 0;
 
-        Node? curr = first;
+        Nodo? curr = first;
         for ( ; curr != null; curr = curr.next )
             ++count;
 
         return count;
     }
 
-    public bool append ( object target )
+    public bool agregar ( object target )
     { // returns true if succesful
 
-        first = new Node( target, first );
+        if ( first == null ) {
+            first = new Nodo( target, null );
+            return true;
+        }
 
-        return true;
-    }
-
-    public bool insert ( object target, uint pos )
-    { // returns true if succesful, precondicion: pos < _length (pos es un indice)
-        if ( pos >= length() )
-            return false;
-
-        Node? curr = first;
-
-        uint i = length()-1 - pos;
-        while ( curr != null && i-- > 0  ) {
+        Nodo? curr = first;
+        while ( curr != null ) {
+            if ( curr.next == null ) {
+                curr.next = new Nodo( target, null );
+                return true;
+            }
             curr = curr.next;
         }
 
-        curr.next = new Node( target, curr.next );
+        return false;
+    }
+
+    public bool insertar ( object target, uint pos )
+    { // returns true if succesful
+        if ( pos >= longitud() )
+            // append(target); return true;
+            return false;
+
+        if ( pos == 0 ) {
+            first = new Nodo( target, first );
+            return true;
+        }
+
+        Nodo? curr = first;
+        while ( pos-- > 1 )
+            curr = curr.next;
+        curr.next = new Nodo( target, curr.next );
 
         return true;
     }
 
-    public object? item ( uint pos ) // 'iesimo'
+    public object? iesimo ( uint pos )
     { // returns obj at index 'pos'
-        Node? curr = first;
 
-        uint i = length()-1 - pos;
-        while ( curr != null && i-- > 0 )
+        if ( pos >= longitud() )
+            return null;
+
+        Nodo? curr = first;
+        while ( pos-- > 0 )
             curr = curr.next;
 
-        return curr == null ? null : curr.value ;
+        return curr == null ? null : curr.value;
     }
 
-    public uint? index ( object target ) // 'ubicacion'
-    { // returns zero-based index of the "first" 'target' ocurrence
-        Node? curr = first;
-
+    public uint? ubicacion ( object target )
+    { // returns zero-based index of the first 'target' ocurrence
+        Nodo? curr = first;
         uint i = 0;
-        uint? idx = null;
+
         while ( curr != null ) {
-            if ( curr.value.Equals(target) ) {
-                idx = i;
-            }
+            if ( curr.value.Equals(target) )
+                return i;
 
             curr = curr.next;
             ++i;
         }
 
-        return length()-1 - idx;
+        return null;
     }
 
-    public void show ( )
+    public bool remover ( object target )
     {
-        show_recursivo( first );
-        Console.Write("\n");
+        if ( first == null )
+            return false;
+
+        Nodo? prev = null;
+        Nodo? curr = first;
+
+        while ( curr != null && !target.Equals(curr.value) ) {
+            prev = curr;
+            curr = curr.next;
+        }
+
+        if ( curr == null )
+            return false;
+
+        if ( prev == null )
+            first = first.next;
+        else
+            prev.next = curr.next;
+
+        return true;
     }
 
-    private void show_recursivo ( Node? nodo )
-    {
-        if ( nodo == null )
-            return;
+    public object? pop ( uint pos )
+    { // returns element at index 'pos' and removes it
 
-        show_recursivo( nodo.next );
-        Console.Write($"{nodo.value}, ");
+        if ( pos >= longitud() )
+            return null;
+
+        if ( first == null )
+            return null;
+
+        Nodo? prev = null;
+        Nodo? curr = first;
+
+        while ( curr != null && pos-- > 0 ) {
+            prev = curr;
+            curr = curr.next;
+        }
+
+        if ( curr == null )
+            return null;
+
+        object val;
+        if ( prev == null ) {
+            val = first.value;
+            first = first.next;
+        } else {
+            val = curr.value;
+            prev.next = curr.next;
+        }
+
+        return val;
     }
 
 }
