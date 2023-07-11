@@ -10,8 +10,6 @@ public class ListaIterativa
 
     public void listar ( )
     {
-        // Console.WriteLine("ENLISTANDO ...");
-
         Nodo? curr = first;
         while ( curr != null ) {
             Console.Write($"{curr.value}, ");
@@ -36,24 +34,22 @@ public class ListaIterativa
         return count;
     }
 
-    public bool agregar ( object target )
+    public void agregar ( object target )
     { // returns true if succesful
 
         if ( first == null ) {
             first = new Nodo( target, null );
-            return true;
+            return;
         }
 
         Nodo? curr = first;
         while ( curr != null ) {
             if ( curr.next == null ) {
                 curr.next = new Nodo( target, null );
-                return true;
+                return;
             }
             curr = curr.next;
         }
-
-        return false;
     }
 
     public bool insertar ( object target, uint pos )

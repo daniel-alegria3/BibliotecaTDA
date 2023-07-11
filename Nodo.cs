@@ -8,10 +8,10 @@ public class Nodo
      * Por eso no se requiere de Propiedades.
     */
 
-    public object value;
+    public object? value;
     public Nodo? next;
 
-    public Nodo ( object value, Nodo? next ) {
+    public Nodo ( object? value, Nodo? next ) {
         this.value = value;
         this.next  = next;
     }
