@@ -15,5 +15,10 @@ public class Nodo
         this.value = value;
         this.next  = next;
     }
+
+    public Nodo ( ) {
+        this.value = null;
+        this.next  = null;
+    }
 }
 

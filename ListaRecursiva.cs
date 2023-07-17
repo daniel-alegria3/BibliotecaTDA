@@ -37,7 +37,7 @@ public class ListaRecursiva
         return 1 + sublista.longitud();
     }
 
-    public void agregar ( object target )
+    public void agregar ( object? target )
     { // returns true if succesful
         if ( es_vacia() ) {
             value = target;
@@ -47,7 +47,7 @@ public class ListaRecursiva
         sublista.agregar( target );
     }
 
-    public bool insertar ( object target, uint pos )
+    public bool insertar ( object? target, uint pos )
     { // returns true if succesful
         if ( pos >= longitud() )
             return false;
@@ -58,7 +58,7 @@ public class ListaRecursiva
             return true;
         }
 
-        sublista.insertar( target, --pos );
+        sublista.insertar( target, pos-1 );
         return false;
     }
 
@@ -71,10 +71,10 @@ public class ListaRecursiva
             return value;
         }
 
-        return sublista.iesimo( --pos );
+        return sublista.iesimo( pos-1 );
     }
 
-    public uint? ubicacion ( object target )
+    public uint? ubicacion ( object? target )
     { // returns zero-based index of the first 'target' ocurrence
         if ( es_vacia() )
             return null;
@@ -85,7 +85,7 @@ public class ListaRecursiva
         return 1 + sublista.ubicacion( target );
     }
 
-    public bool remover ( object target )
+    public bool remover ( object? target )
     {
         if ( es_vacia() )
             return false;
@@ -115,7 +115,7 @@ public class ListaRecursiva
             return val;
         }
 
-        return sublista.pop( --pos );
+        return sublista.pop( pos-1 );
     }
 
 }

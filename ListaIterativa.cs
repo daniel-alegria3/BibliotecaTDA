@@ -28,45 +28,43 @@ public class ListaIterativa
         uint count = 0;
 
         Nodo? curr = first;
-        for ( ; curr != null; curr = curr.next )
+        while ( curr != null ) {
             ++count;
+            curr = curr.next ;
+        }
 
         return count;
     }
 
-    public void agregar ( object target )
-    { // returns true if succesful
-
+    public void agregar ( object? target )
+    {
         if ( first == null ) {
             first = new Nodo( target, null );
             return;
         }
 
         Nodo? curr = first;
-        while ( curr != null ) {
-            if ( curr.next == null ) {
-                curr.next = new Nodo( target, null );
-                return;
-            }
+        while ( curr.next != null ) {
             curr = curr.next;
         }
+
+        curr.next = new Nodo( target, null );
+        return;
     }
 
-    public bool insertar ( object target, uint pos )
+    public bool insertar ( object? target, uint pos )
     { // returns true if succesful
         if ( pos >= longitud() )
             // append(target); return true;
             return false;
 
-        if ( pos == 0 ) {
-            first = new Nodo( target, first );
-            return true;
-        }
-
         Nodo? curr = first;
-        while ( pos-- > 1 )
+        while ( pos-- > 0 )
             curr = curr.next;
-        curr.next = new Nodo( target, curr.next );
+
+        object? val = curr.value;
+        curr.value = target;
+        curr.next = new Nodo( val, curr.next );
 
         return true;
     }
@@ -84,7 +82,7 @@ public class ListaIterativa
         return curr == null ? null : curr.value;
     }
 
-    public uint? ubicacion ( object target )
+    public uint? ubicacion ( object? target )
     { // returns zero-based index of the first 'target' ocurrence
         Nodo? curr = first;
         uint i = 0;
@@ -100,7 +98,7 @@ public class ListaIterativa
         return null;
     }
 
-    public bool remover ( object target )
+    public bool remover ( object? target )
     {
         if ( first == null )
             return false;
@@ -126,31 +124,22 @@ public class ListaIterativa
 
     public object? pop ( uint pos )
     { // returns element at index 'pos' and removes it
+        return null; // TODO
 
         if ( pos >= longitud() )
             return null;
 
-        if ( first == null )
-            return null;
-
-        Nodo? prev = null;
         Nodo? curr = first;
 
-        while ( curr != null && pos-- > 0 ) {
-            prev = curr;
+        while ( pos-- > 0 ) {
             curr = curr.next;
         }
 
-        if ( curr == null )
-            return null;
-
-        object val;
-        if ( prev == null ) {
-            val = first.value;
-            first = first.next;
-        } else {
+        object? val;
+        if ( curr.next != null ) {
             val = curr.value;
-            prev.next = curr.next;
+            curr.value = curr.next.value;
+            curr.next = curr.next.next;
         }
 
         return val;
