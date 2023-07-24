@@ -45,5 +45,14 @@ public class Pila
         return valor;
     }
 
+    public void mostrar ()
+    {
+        if ( es_vacio() ) {
+            return;
+        }
+        subpila.mostrar();
+        Console.Write($"{valor}, ");
+    }
+
 }
 
