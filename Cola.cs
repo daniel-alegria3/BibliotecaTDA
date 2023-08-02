@@ -17,7 +17,7 @@ public class Cola
         this.subcabeza = subcabeza;
     }
 
-    public bool es_vacio ( )
+    public bool EsVacia ( )
     {
         return valor == null && subcabeza == null;
     }
@@ -27,19 +27,19 @@ public class Cola
         return false;
     }
 
-    public void colar ( object? val )
+    public void Acolar ( object? val )
     {
-        if ( es_vacio() ) {
+        if ( EsVacia() ) {
             valor = val;
             subcabeza = new Cola();
             return;
         }
-        subcabeza.colar( val );
+        subcabeza.Acolar( val );
     }
 
-    public object? desacolar ( )
+    public object? Desacolar ( )
     {
-        if ( es_vacio() )
+        if ( EsVacia() )
             return null;
 
         object? val = valor;
@@ -49,7 +49,7 @@ public class Cola
         return val;
     }
 
-    public object? cabeza ( )
+    public object? Cima ( )
     {
         return valor;
     }

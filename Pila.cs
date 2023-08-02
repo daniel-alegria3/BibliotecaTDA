@@ -17,20 +17,20 @@ public class Pila
         this.subpila = subpila;
     }
 
-    public bool es_vacio ( )
+    public bool EsVacia ( )
     {
         return valor == null && subpila == null;
     }
 
-    public void apilar ( object? val )
+    public void Apilar ( object? val )
     {
         subpila = new Pila ( valor, subpila );
         valor = val;
     }
 
-    public object? desapilar ( )
+    public object? Desapilar ( )
     {
-        if ( es_vacio() )
+        if ( EsVacia() )
             return null;
 
         object? val = valor;
@@ -40,14 +40,14 @@ public class Pila
         return val;
     }
 
-    public object? cima ( )
+    public object? Cima ( )
     {
         return valor;
     }
 
     public void mostrar ()
     {
-        if ( es_vacio() ) {
+        if ( EsVacia() ) {
             return;
         }
         subpila.mostrar();
