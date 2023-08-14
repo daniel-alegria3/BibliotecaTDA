@@ -17,7 +17,7 @@ public class Pila
         this.subpila = subpila;
     }
 
-    public bool EsVacia ( )
+    public bool EsVacio ( )
     {
         return valor == null && subpila == null;
     }
@@ -30,7 +30,7 @@ public class Pila
 
     public object? Desapilar ( )
     {
-        if ( EsVacia() )
+        if ( EsVacio() )
             return null;
 
         object? val = valor;
@@ -45,12 +45,12 @@ public class Pila
         return valor;
     }
 
-    public void mostrar ()
+    public void Mostrar ()
     {
-        if ( EsVacia() ) {
+        if ( EsVacio() ) {
             return;
         }
-        subpila.mostrar();
+        subpila.Mostrar();
         Console.Write($"{valor}, ");
     }
 

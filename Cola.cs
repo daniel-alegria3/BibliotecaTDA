@@ -17,19 +17,14 @@ public class Cola
         this.subcabeza = subcabeza;
     }
 
-    public bool EsVacia ( )
+    public bool EsVacio ( )
     {
         return valor == null && subcabeza == null;
     }
 
-    public bool es_lleno ( )
-    {
-        return false;
-    }
-
     public void Acolar ( object? val )
     {
-        if ( EsVacia() ) {
+        if ( EsVacio() ) {
             valor = val;
             subcabeza = new Cola();
             return;
@@ -39,7 +34,7 @@ public class Cola
 
     public object? Desacolar ( )
     {
-        if ( EsVacia() )
+        if ( EsVacio() )
             return null;
 
         object? val = valor;

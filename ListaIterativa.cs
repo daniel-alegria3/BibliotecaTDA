@@ -18,7 +18,7 @@ public class ListaIterativa
         Console.Write("\n");
     }
 
-    public bool es_vacia ( )
+    public bool EsVacio ( )
     {
         return first == null;
     }
@@ -36,7 +36,7 @@ public class ListaIterativa
         return count;
     }
 
-    public void agregar ( object? target )
+    public void Agregar ( object? target )
     {
         if ( first == null ) {
             first = new Nodo( target, null );
@@ -52,7 +52,7 @@ public class ListaIterativa
         return;
     }
 
-    public bool insertar ( object? target, uint pos )
+    public bool Insertar ( object? target, uint pos )
     { // returns true if succesful
         if ( pos >= longitud() )
             // append(target); return true;
@@ -69,7 +69,7 @@ public class ListaIterativa
         return true;
     }
 
-    public object? iesimo ( uint pos )
+    public object? Iesimo ( uint pos )
     { // returns obj at index 'pos'
 
         if ( pos >= longitud() )
@@ -82,7 +82,7 @@ public class ListaIterativa
         return curr == null ? null : curr.value;
     }
 
-    public uint? ubicacion ( object? target )
+    public uint? Ubicacion ( object? target )
     { // returns zero-based index of the first 'target' ocurrence
         Nodo? curr = first;
         uint i = 0;
@@ -98,7 +98,7 @@ public class ListaIterativa
         return null;
     }
 
-    public bool remover ( object? target )
+    public bool Remover ( object? target )
     {
         if ( first == null )
             return false;
@@ -122,7 +122,7 @@ public class ListaIterativa
         return true;
     }
 
-    public object? pop ( uint pos )
+    public object? Pop ( uint pos )
     { // returns element at index 'pos' and removes it
         return null; // TODO
 

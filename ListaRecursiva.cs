@@ -15,41 +15,41 @@ public class ListaRecursiva
         sublista = null;
     }
 
-    public bool es_vacia ( )
+    public bool EsVacio ( )
     {
         return value == null && sublista == null;
     }
 
-    public void listar ( )
+    public void Listar ( )
     {
-        if ( es_vacia() ) {
+        if ( EsVacio() ) {
             Console.Write("\n");
             return;
         }
         Console.Write($"{value}, ");
-        sublista.listar();
+        sublista.Listar();
     }
 
-    public uint longitud ( )
+    public uint Longitud ( )
     {
-        if ( es_vacia() )
+        if ( EsVacio() )
             return 0;
-        return 1 + sublista.longitud();
+        return 1 + sublista.Longitud();
     }
 
-    public void agregar ( object? target )
+    public void Agregar ( object? target )
     { // returns true if succesful
-        if ( es_vacia() ) {
+        if ( EsVacio() ) {
             value = target;
             sublista = new ListaRecursiva();
             return;
         }
-        sublista.agregar( target );
+        sublista.Agregar( target );
     }
 
-    public bool insertar ( object? target, uint pos )
+    public bool Insertar ( object? target, uint pos )
     { // returns true if succesful
-        if ( pos >= longitud() )
+        if ( pos >= Longitud() )
             return false;
 
         if ( pos == 0 ) {
@@ -58,36 +58,36 @@ public class ListaRecursiva
             return true;
         }
 
-        sublista.insertar( target, pos-1 );
+        sublista.Insertar( target, pos-1 );
         return false;
     }
 
-    public object? iesimo ( uint pos )
+    public object? Iesimo ( uint pos )
     { // returns obj at index 'pos'
-        if ( pos >= longitud() )
+        if ( pos >= Longitud() )
             return null;
 
         if ( pos == 0 ) {
             return value;
         }
 
-        return sublista.iesimo( pos-1 );
+        return sublista.Iesimo( pos-1 );
     }
 
-    public uint? ubicacion ( object? target )
+    public uint? Ubicacion ( object? target )
     { // returns zero-based index of the first 'target' ocurrence
-        if ( es_vacia() )
+        if ( EsVacio() )
             return null;
 
         if ( value.Equals( target ) )
             return 0;
 
-        return 1 + sublista.ubicacion( target );
+        return 1 + sublista.Ubicacion( target );
     }
 
-    public bool remover ( object? target )
+    public bool Remover ( object? target )
     {
-        if ( es_vacia() )
+        if ( EsVacio() )
             return false;
 
         if ( value.Equals( target ) ) {
@@ -97,14 +97,14 @@ public class ListaRecursiva
 
         }
 
-        sublista.remover( target );
+        sublista.Remover( target );
 
         return false;
     }
 
-    public object? pop ( uint pos )
+    public object? Pop ( uint pos )
     { // returns element at index 'pos' and removes it
-        if ( pos >= longitud() )
+        if ( pos >= Longitud() )
             return null;
 
         if ( pos == 0 ) {
@@ -115,7 +115,7 @@ public class ListaRecursiva
             return val;
         }
 
-        return sublista.pop( pos-1 );
+        return sublista.Pop( pos-1 );
     }
 
 }

@@ -187,10 +187,10 @@ namespace BibliotecaTDA
             if (!EsVacia())
             {
                 if (aRaiz.ToString().Equals(pRaiz.ToString())) {
-                    Console.Write($"| {aRaiz}-");
+                    // Console.Write($"| {aRaiz}-");
                     return this;
                 } else {
-                    Console.Write($"{aRaiz}-");
+                    // Console.Write($"{aRaiz}-");
                     Arbol ArbolAux = null;
                     if (aPrimerHijo != null)
                         ArbolAux = aPrimerHijo.SubArbol(pRaiz);
@@ -362,7 +362,7 @@ namespace BibliotecaTDA
             Pila Pila2 = new Pila ();
             Arbol Aux;
             Pila1.Apilar(this);
-            while (!Pila1.EsVacia())
+            while (!Pila1.EsVacio())
             {
                 Aux = Pila1.Cima() as Arbol;
                 Pila1.Desapilar();
@@ -372,9 +372,9 @@ namespace BibliotecaTDA
                     Pila1.Apilar(Aux.aSgteHermano);
                 if (Aux.PrimerHijo != null)
                     Pila2.Apilar(Aux.PrimerHijo);
-                if (Pila1.EsVacia())
+                if (Pila1.EsVacio())
                 {
-                    while (!Pila2.EsVacia())
+                    while (!Pila2.EsVacio())
                     {
                         Pila1.Apilar(Pila2.Cima());
                         Pila2.Desapilar();

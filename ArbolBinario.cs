@@ -232,10 +232,11 @@ namespace BibliotecaTDA
 
             if (!EsVacia() && pRaiz!=null)
             {
-                if (aRaiz.ToString().Equals(pRaiz.ToString()))
+                if (aRaiz.ToString().Equals(pRaiz.ToString())) {
+                    Console.Write($"{aRaiz}-");
                     return this;
-                else
-                {
+                } else {
+                    Console.Write($"{aRaiz}-");
                     ArbolBinario Temp=null;
                     if (aHijoIzquierdo != null)
                         Temp = aHijoIzquierdo.SubArbol(pRaiz);
@@ -244,11 +245,14 @@ namespace BibliotecaTDA
                         if (aHijoDerecho != null)
                             Temp = aHijoDerecho.SubArbol(pRaiz);
                     }
+                    Console.Write("\n");
                     return Temp;
                 }
             }
-            else
+            else {
+                Console.Write("\n");
                 return null;
+            }
         }
 
         public void Procesar()
@@ -280,6 +284,15 @@ namespace BibliotecaTDA
                 aHijoIzquierdo.RecorrerPreOrden();
         }
 
+        // public void RecorrerInOrden()
+        // {
+        //    
+        //     if (aHijoDerecho != null)
+        //         aHijoDerecho.RecorrerInOrden();
+        //     Procesar();
+        //     if (aHijoIzquierdo != null)
+        //         aHijoIzquierdo.RecorrerInOrden();
+        // }
         public void RecorrerInOrden()
         {
             
@@ -289,6 +302,7 @@ namespace BibliotecaTDA
             if (aHijoIzquierdo != null)
                 aHijoIzquierdo.RecorrerInOrden();
         }
+
         public void RecorrerPosOrden()
         {
 
@@ -305,7 +319,7 @@ namespace BibliotecaTDA
                 Cola cola = new Cola ();
                 cola.Acolar(this);
                 ArbolBinario Aux;
-                while(!cola.EsVacia())
+                while(!cola.EsVacio())
                 {
                     Aux = cola.Cima() as ArbolBinario;
                     Procesar(Aux.Raiz);

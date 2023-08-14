@@ -115,9 +115,12 @@ namespace BibliotecaTDA
         {
             if (pRaiz != null && !EsVacio())
             {
+                Console.Write($"{aRaiz}-");
                 //se verifica si estamos en la raiz correcta
-                if (pRaiz.ToString().Equals(aRaiz.ToString()))
+                if (pRaiz.ToString().Equals(aRaiz.ToString())) {
+                    Console.Write("\n");
                     return this;
+                }
                 //se decide hacia que hijo ir
                 ArbolBB Aux = aHijoDerecho;
                 if (pRaiz.ToString().CompareTo(aRaiz.ToString()) == -1)
@@ -125,9 +128,12 @@ namespace BibliotecaTDA
                 //se repite el proceso si el hijo existe
                 if (Aux != null)
                     return Aux.SubArbol(pRaiz);
-                else
+                else {
+                    Console.Write("\n");
                     return null;
+                }
             }
+            Console.Write("\n");
             return null;
         }
         public object MayorElemento()
@@ -280,7 +286,7 @@ namespace BibliotecaTDA
             cola.Acolar(this);
             ArbolBB Temp;
             object Aux;
-            while(!cola.EsVacia())
+            while(!cola.EsVacio())
             {
                 Temp=cola.Cima() as ArbolBB;
                 if(!Temp.EsVacio())
