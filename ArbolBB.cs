@@ -115,25 +115,25 @@ namespace BibliotecaTDA
         {
             if (pRaiz != null && !EsVacio())
             {
-                Console.Write($"{aRaiz}-");
+                // Console.Write($"{aRaiz}-");
                 //se verifica si estamos en la raiz correcta
                 if (pRaiz.ToString().Equals(aRaiz.ToString())) {
-                    Console.Write("\n");
+                    // Console.Write("\n");
                     return this;
                 }
                 //se decide hacia que hijo ir
                 ArbolBB Aux = aHijoDerecho;
                 if (pRaiz.ToString().CompareTo(aRaiz.ToString()) == -1)
-                    Aux = aHijoDerecho;
+                    Aux = aHijoIzquierdo;
                 //se repite el proceso si el hijo existe
                 if (Aux != null)
                     return Aux.SubArbol(pRaiz);
                 else {
-                    Console.Write("\n");
+                    // Console.Write("\n");
                     return null;
                 }
             }
-            Console.Write("\n");
+            // Console.Write("\n");
             return null;
         }
         public object MayorElemento()
